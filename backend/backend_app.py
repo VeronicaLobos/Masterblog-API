@@ -33,14 +33,49 @@ def get_posts():
 
 @app.route('/api/posts/<int:post_id>', methods=['DELETE'])
 def delete_post(post_id):
+    # Find the post by ID and exclude it from the list
     global POSTS
     initial_length = len(POSTS)
     POSTS = [post for post in POSTS if post.get('id') != post_id]
+
+    # Check if the post was deleted
     if len(POSTS) < initial_length:
         return jsonify({"message": f"Post with id {post_id} "
                             f"has been deleted successfully."}), 200
     else:
         return jsonify({"error": "Post not found"}), 404
+
+
+@app.route('/api/posts/<int:post_id>', methods=['PUT'])
+def update_post(post_id):
+    # Find the post by ID
+    global POSTS
+    post = [post for post in POSTS if post.get('id') == post_id]
+
+    # If it doesn't exist, return an error
+    if not post:
+        return jsonify({"error": "Post not found"}), 404
+
+    post_to_update = post[0]
+    new_content = request.get_json()
+
+    if new_content:
+        # The title and content are optional
+        if 'title' in new_content:
+            post_to_update['title'] = new_content['title']
+        if 'content' in new_content:
+            post_to_update['content'] = new_content['content']
+
+    # Update the post in the list
+    for item, post in enumerate(POSTS):
+        if post['id'] == post_id:
+            post.update(post_to_update)
+            break
+
+    return jsonify(post_to_update), 200
+
+
+
 
 
 if __name__ == '__main__':
