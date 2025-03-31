@@ -1,3 +1,5 @@
+from crypt import methods
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -27,6 +29,18 @@ def get_posts():
         return jsonify(new_post), 201
 
     return jsonify(POSTS)
+
+
+@app.route('/api/posts/<int:post_id>', methods=['DELETE'])
+def delete_post(post_id):
+    global POSTS
+    initial_length = len(POSTS)
+    POSTS = [post for post in POSTS if post.get('id') != post_id]
+    if len(POSTS) < initial_length:
+        return jsonify({"message": f"Post with id {post_id} "
+                            f"has been deleted successfully."}), 200
+    else:
+        return jsonify({"error": "Post not found"}), 404
 
 
 if __name__ == '__main__':
