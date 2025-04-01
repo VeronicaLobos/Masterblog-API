@@ -17,7 +17,9 @@
       "get": {
         "summary": "Returns all posts",
         "produces": [
-          "application/json"
+          "application/json",
+          "application/vnd.myapi.v2+json",
+          "application/vnd.myapi.v1+json"
         ],
         "tags": [
           "Post"
@@ -32,9 +34,50 @@
                 "properties": {
                   "id": { "type": "integer" },
                   "title": { "type": "string" },
-                  "content": { "type": "string" }
+                  "content": { "type": "string" },
+                  "author": { "type": "string" },
+                  "date": { "type": "string", "format": "date-time" }
                 }
               }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new post",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Post"
+        ],
+        "parameters": [
+          {
+            "name": "post",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "title": { "type": "string" },
+                    "content": { "type": "string" },
+                    "author": { "type": "string" },
+                    "date": { "type": "string", "format": "date-time" }
+                }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Post created successfully",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "title": { "type": "string" },
+                    "content": { "type": "string" },
+                    "author": { "type": "string" },
+                    "date": { "type": "string", "format": "date-time" }
+                }
             }
           }
         }

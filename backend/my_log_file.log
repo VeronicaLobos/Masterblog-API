@@ -1,0 +1,20 @@
+2025-04-01 22:59:42 WARNING:  * Debugger is active!
+2025-04-01 22:59:42 INFO:  * Debugger PIN: 136-557-227
+2025-04-01 23:00:43 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-01 23:00:43 INFO: [33mPress CTRL+C to quit[0m
+2025-04-01 23:00:43 INFO:  * Restarting with stat
+2025-04-01 23:00:43 WARNING:  * Debugger is active!
+2025-04-01 23:00:43 INFO:  * Debugger PIN: 136-557-227
+2025-04-01 23:01:02 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-01 23:01:02 INFO: [33mPress CTRL+C to quit[0m
+2025-04-01 23:01:02 INFO:  * Restarting with stat
+2025-04-01 23:01:02 WARNING:  * Debugger is active!
+2025-04-01 23:01:02 INFO:  * Debugger PIN: 136-557-227
+2025-04-01 23:01:08 INFO: GET request received for /api/books
+2025-04-01 23:01:08 INFO: 192.168.2.104 - - [01/Apr/2025 23:01:08] "GET /api/posts HTTP/1.1" 200 -

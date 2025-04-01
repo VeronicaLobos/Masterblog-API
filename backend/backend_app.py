@@ -5,8 +5,21 @@ RESTful API for managing blog posts.
 It includes endpoints for creating, retrieving (sorting,
 pagination), updating, deleting, and searching for posts.
 
+The application uses Flask-CORS for Cross-Origin Resource Sharing,
+in this case the backend runs in Codio and the frontend in localhost.
+
+It also uses Flask-Limiter for rate limiting to prevent abuse,
+currently set to 10 requests per minute.
+
+The application serves a Swagger UI for API documentation
+and testing, which is available at the /api/docs endpoint.
+
+The API supports versioning through the Accept header,
+allowing clients to specify the desired version of the API
+
 """
 
+import logging
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_limiter import Limiter
@@ -16,6 +29,11 @@ from flask_swagger_ui import get_swaggerui_blueprint
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 limiter = Limiter(app=app, key_func=get_remote_address) # Rate limiting
+logging.basicConfig(level=logging.INFO,
+    format='%(asctime)s %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    filename='my_log_file.log')
+
 
 # swagger endpoint e.g. HTTP://localhost:5002/api/docs
 SWAGGER_URL="/api/docs"
@@ -27,8 +45,10 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 POSTS = [
-    {"id": 1, "title": "First post", "content": "This is the first post."},
-    {"id": 2, "title": "Second post", "content": "This is the second post."},
+    {"id": 1, "title": "First post", "content": "This is the first post.",
+     "author": "Your Name", "date": "2023-06-07"},
+    {"id": 2, "title": "Second post", "content": "This is the second post.",
+     "author": "Your Name", "date": "2023-06-07"}
 ]
 
 
@@ -42,6 +62,8 @@ def get_posts():
     If the request is POST, it creates a new post in the database.
 
     If the request is GET, it retrieves all posts.
+    Logs the request and returns a list of posts in JSON format.
+
     Optionally, it can filter posts by title or content in the query,
     in alphabetical order, also optionally in ascending or descending
     order. For example: .../api/posts?sort=title&direction=desc
@@ -63,6 +85,8 @@ def get_posts():
         return jsonify(new_post), 201
 
     elif request.method == 'GET':
+        app.logger.info('GET request received for /api/books')
+
         accept_header = request.headers.get('Accept')
         posts = POSTS[:]
 
