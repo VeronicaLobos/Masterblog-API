@@ -14,7 +14,20 @@ POSTS = [
 
 
 @app.route('/api/posts', methods=['GET', 'POST'])
+@limiter.limit("10/minute")
 def get_posts():
+    """
+    Handles GET and POST requests for the /api/posts
+    endpoint.
+
+    If the request is POST, it creates a new post in the database.
+
+    If the request is GET, it retrieves all posts.
+    Optionally, it can filter posts by title or content in the query,
+    in alphabetical order, also optionally in ascending or descending
+    order. For example: .../api/posts?sort=title&direction=desc
+    :return: A list of posts or a newly created post.
+    """
     if request.method == 'POST':
         # Create a new post from the request data
         new_post = request.get_json()
@@ -29,7 +42,32 @@ def get_posts():
         POSTS.append(new_post)
         return jsonify(new_post), 201
 
-    return jsonify(POSTS)
+    elif request.method == 'GET':
+        sort = request.args.get('sort')
+        direction = request.args.get('direction')
+        posts = POSTS[:]
+
+        # Sort posts by title or content in alphabetical order
+        if sort:
+            if sort == 'title':
+                posts = sorted(posts, key=lambda post: post['title'].lower())
+            elif sort == 'content':
+                posts = sorted(posts, key=lambda post: post['content'].lower())
+            else:
+                return jsonify({"error": "Invalid sort parameter"}), 400
+
+            # Reverse the order if direction is specified
+            if direction:
+                if direction == 'desc':
+                    posts = posts[::-1]
+                ## Since the default is ascending, but the instructions
+                ## explicitly say it should accept asc or desc, this is
+                ## the way I think it should be handled
+                elif direction != 'asc':
+                    return (jsonify({"error": "Invalid direction parameter"}),
+                            400)  # Handle invalid direction
+
+        return jsonify(posts)
 
 
 @app.route('/api/posts/<int:post_id>', methods=['DELETE'])
@@ -95,7 +133,6 @@ def search_posts():
                           in post['content'].lower()]
 
     return jsonify(filtered_posts), 200
-
 
 
 if __name__ == '__main__':
