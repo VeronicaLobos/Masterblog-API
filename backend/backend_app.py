@@ -77,11 +77,15 @@ def get_posts():
     allowing clients to specify the desired version of the API response
     (currently v1 default, this feature is just to learn how to implement it).
 
+    :payload new_post: A JSON payload with the new post data
+        {"title": "New Title",
+        "content": "New Content",
+        "author": "New Author"}
     :return: A list of posts or a newly created post, or an error message,
     along with the appropriate HTTP status code.
     """
     if request.method == 'POST':
-        app.logger.info('POST request received for /api/books')
+        app.logger.info('POST request received for /api/posts')
         new_post = request.get_json()
         if (not new_post or 'title' not in new_post
                 or 'content' not in new_post
@@ -98,14 +102,13 @@ def get_posts():
         return jsonify(new_post), 201
 
     elif request.method == 'GET':
-        app.logger.info('GET request received for /api/books')
+        app.logger.info('GET request received for /api/posts')
 
         accept_header = request.headers.get('Accept')
         posts = POSTS[:]
 
         sort = request.args.get('sort')
         direction = request.args.get('direction')
-        # Sort posts by title or content in alphabetical order
         if sort:
             if sort == 'title':
                 posts = sorted(posts, key=lambda post: post['title'].lower())
@@ -114,73 +117,97 @@ def get_posts():
             else:
                 return jsonify({"error": "Invalid sort parameter"}), 400
 
-            # Reverse the order if direction is specified
             if direction:
                 if direction == 'desc':
                     posts = posts[::-1]
                 ## Since the default is ascending, but the instructions
-                ## explicitly say it should accept asc or desc, this is
-                ## the way I think it should be handled
+                ## explicitly say it should accept either asc or desc,
+                ## this is the way I think it should be handled
                 elif direction != 'asc':
                     return (jsonify({"error": "Invalid direction parameter"}),
                             400)
 
-        # Paginate the results
         page = int(request.args.get('page', 1))
         if page:
             limit = int(request.args.get('limit', 10))
-
             start_index = (page - 1) * limit
             end_index = start_index + limit
-
             posts = posts[start_index:end_index]
 
+        ## For now I implemented the versioning for learning purposes
         if ('application/vnd.myapi.v1+json' in accept_header
                     or accept_header == 'application/json'):
-            return jsonify(posts)
+            return jsonify(posts), 200
         elif 'application/vnd.myapi.v2+json' in accept_header:
             posts_v2 = [dict(post, version='v2') for post in posts]
-            return jsonify(posts_v2)
+            return jsonify(posts_v2), 200
 
         return jsonify(posts), 200
 
 
 @app.route('/api/posts/<int:post_id>', methods=['DELETE'])
 def delete_post(post_id):
-    # Find the post by ID and exclude it from the list
+    """
+    Handles DELETE requests for the /api/posts/<int:post_id> endpoint.
+
+    Logs the request and deletes the post with the specified ID.
+    Checks if there is one less post in the database.
+
+    :param post_id: Required post ID to delete as an integer.
+    :return: A json response with a success message or an error message,
+    along with the appropriate HTTP status code.
+    """
+    app.logger.info('DELETE request received for /api/posts/<int:post_id>')
+
     global POSTS
     initial_length = len(POSTS)
     POSTS = [post for post in POSTS if post.get('id') != post_id]
 
-    # Check if the post was deleted
     if len(POSTS) < initial_length:
         return jsonify({"message": f"Post with id {post_id} "
                             f"has been deleted successfully."}), 200
     else:
-        return jsonify({"error": "Post not found"}), 404
+        return jsonify({"error": "Post not found: please check the ID"}), 404
 
 
 @app.route('/api/posts/<int:post_id>', methods=['PUT'])
 def update_post(post_id):
-    # Find the post by ID
+    """
+    Handles PUT requests for the /api/posts/<int:post_id> endpoint.
+
+    Logs the request, checks if the post exists and updates its content
+    if payload contains at least one key:value pair.
+
+    :param post_id: Required post ID to update as an integer.
+    :payload new_content: JSON payload with the new content for the post.
+        {"title": "New Title",
+        "content": "New Content",
+        "author": "New Author",
+        "date": "New Date"}
+    :return: The updated post in JSON format or an error message,
+    along with the appropriate HTTP status code.
+    """
+    app.logger.info('PUT request received for /api/posts/<int:post_id>')
+
     global POSTS
     post = [post for post in POSTS if post.get('id') == post_id]
 
-    # If it doesn't exist, return an error
     if not post:
-        return jsonify({"error": "Post not found"}), 404
+        return jsonify({"error": "Post not found: please check the ID"}), 404
 
     post_to_update = post[0]
     new_content = request.get_json()
 
     if new_content:
-        # The title and content are optional
         if 'title' in new_content:
             post_to_update['title'] = new_content['title']
         if 'content' in new_content:
             post_to_update['content'] = new_content['content']
+        if 'author' in new_content:
+            post_to_update['author'] = new_content['author']
+        if 'date' in new_content:
+            post_to_update['date'] = new_content['date']
 
-    # Update the post in the list
     for item, post in enumerate(POSTS):
         if post['id'] == post_id:
             post.update(post_to_update)
