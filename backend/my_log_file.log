@@ -266,3 +266,21 @@
 2025-04-02 10:03:36 INFO: 127.0.0.1 - - [02/Apr/2025 10:03:36] "GET /api/posts/search?title=time HTTP/1.1" 200 -
 2025-04-02 10:03:57 INFO: DELETE request received for /api/posts/<int:post_id>
 2025-04-02 10:03:57 INFO: 127.0.0.1 - - [02/Apr/2025 10:03:57] "DELETE /api/posts/4 HTTP/1.1" 200 -
+2025-04-02 10:15:22 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 10:15:22 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 10:15:22 INFO:  * Restarting with stat
+2025-04-02 10:15:22 WARNING:  * Debugger is active!
+2025-04-02 10:15:22 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:15:28 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:28] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:15:28 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:28] "GET /api/docs/ HTTP/1.1" 200 -
