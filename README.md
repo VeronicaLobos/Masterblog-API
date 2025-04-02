@@ -3,6 +3,11 @@
 In this school project, I created a simple blog application using Flask.
 The front-end app CSR was provided. Currently working on completing the REST API with UPDATE and DELETE methods.
 
+<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/python.png" alt="Python" title="Python"/>
+<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/pycharm.png" alt="PyCharm" title="PyCharm"/>
+<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/flask.png" alt="Flask" title="Flask"/>
+<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postman.png" alt="Postman" title="Postman"/>
+
 The objective was to learn the basics of creating an API with Flask and to understand how to handle CRUD operations.
 Also learned how to create documentation for the API using Swagger UI.
 
