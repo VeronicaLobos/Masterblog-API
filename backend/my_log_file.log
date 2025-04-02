@@ -284,3 +284,133 @@
 2025-04-02 10:15:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:22] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
 2025-04-02 10:15:28 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:28] "[32mGET /api/docs HTTP/1.1[0m" 308 -
 2025-04-02 10:15:28 INFO: 127.0.0.1 - - [02/Apr/2025 10:15:28] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:42:50 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 10:42:50 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 10:42:50 INFO:  * Restarting with stat
+2025-04-02 10:42:50 WARNING:  * Debugger is active!
+2025-04-02 10:42:50 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:42:50 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:50] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:42:51 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:51] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:42:55 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:55] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:42:56 INFO: GET request received for /api/posts
+2025-04-02 10:42:56 INFO: 127.0.0.1 - - [02/Apr/2025 10:42:56] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:43:23 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 10:43:23 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 10:43:23 INFO:  * Restarting with stat
+2025-04-02 10:43:23 WARNING:  * Debugger is active!
+2025-04-02 10:43:23 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:43:23 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:23] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:43:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:31] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:43:32 INFO: GET request received for /api/posts
+2025-04-02 10:43:32 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:32] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:43:37 INFO: GET request received for /api/posts
+2025-04-02 10:43:37 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:37] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:43:38 INFO: GET request received for /api/posts/search
+2025-04-02 10:43:38 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:38] "GET /api/posts/search?title=Your HTTP/1.1" 200 -
+2025-04-02 10:43:38 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:38] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-02 10:43:38 INFO: 127.0.0.1 - - [02/Apr/2025 10:43:38] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-02 10:44:21 INFO:  * Detected change in '/Users/veronica/PycharmProjects/Masterblog-API/backend/backend_app.py', reloading
+2025-04-02 10:44:21 INFO:  * Restarting with stat
+2025-04-02 10:44:22 WARNING:  * Debugger is active!
+2025-04-02 10:44:22 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:44:22 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:22] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:44:26 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:26] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:44:27 INFO: GET request received for /api/posts
+2025-04-02 10:44:27 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:27] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:44:32 INFO: GET request received for /api/posts/search
+2025-04-02 10:44:32 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:32] "GET /api/posts/search?title=Your HTTP/1.1" 200 -
+2025-04-02 10:44:32 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:32] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-02 10:44:32 INFO: 127.0.0.1 - - [02/Apr/2025 10:44:32] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:19 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 10:45:19 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 10:45:19 INFO:  * Restarting with stat
+2025-04-02 10:45:20 WARNING:  * Debugger is active!
+2025-04-02 10:45:20 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:20] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:24 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:24] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 10:45:25 INFO: GET request received for /api/posts
+2025-04-02 10:45:25 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:25] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:45:27 INFO: GET request received for /api/posts/search
+2025-04-02 10:45:27 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:27] "GET /api/posts/search?title=Your HTTP/1.1" 200 -
+2025-04-02 10:45:27 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:27] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:27 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:27] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:31 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:31] "[33mGET /api/posts/ HTTP/1.1[0m" 404 -
+2025-04-02 10:45:34 INFO: GET request received for /api/posts
+2025-04-02 10:45:34 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:34] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:45:41 INFO: GET request received for /api/posts/search
+2025-04-02 10:45:41 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:41] "GET /api/posts/search?title=Your HTTP/1.1" 200 -
+2025-04-02 10:45:41 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:41] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-02 10:45:41 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:41] "[36mGET /api/posts/search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-02 10:45:48 INFO: GET request received for /api/posts/search
+2025-04-02 10:45:48 INFO: 127.0.0.1 - - [02/Apr/2025 10:45:48] "GET /api/posts/search?author=Titor HTTP/1.1" 200 -
+2025-04-02 10:46:10 INFO: GET request received for /api/posts
+2025-04-02 10:46:10 INFO: 127.0.0.1 - - [02/Apr/2025 10:46:10] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 10:46:38 INFO: POST request received for /api/posts
+2025-04-02 10:46:38 INFO: 127.0.0.1 - - [02/Apr/2025 10:46:38] "[35m[1mPOST /api/posts HTTP/1.1[0m" 201 -
+2025-04-02 10:46:46 INFO: GET request received for /api/posts/search
+2025-04-02 10:46:46 INFO: 127.0.0.1 - - [02/Apr/2025 10:46:46] "GET /api/posts/search?author=Titor HTTP/1.1" 200 -
+2025-04-02 10:47:02 INFO: GET request received for /api/posts/search
+2025-04-02 10:47:02 INFO: 127.0.0.1 - - [02/Apr/2025 10:47:02] "GET /api/posts/search?author=Titor HTTP/1.1" 200 -
+2025-04-02 10:47:13 INFO: GET request received for /api/posts/search
+2025-04-02 10:47:13 INFO: 127.0.0.1 - - [02/Apr/2025 10:47:13] "GET /api/posts/search?title=test HTTP/1.1" 200 -
+2025-04-02 10:47:20 INFO: DELETE request received for /api/posts/<int:post_id>
+2025-04-02 10:47:20 INFO: 127.0.0.1 - - [02/Apr/2025 10:47:20] "DELETE /api/posts/4 HTTP/1.1" 200 -
