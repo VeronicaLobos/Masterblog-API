@@ -83,9 +83,11 @@
                 "description": "Invalid input"
             }
         }
-      },
-        "put": {
-            "summary": "Update an existing post",
+      }
+    },
+    "/api/posts/{id}": {
+      "put": {
+            "summary": "Update an existing post by ID",
             "produces": [
             "application/json"
             ],
@@ -128,10 +130,8 @@
                 "description": "Method not allowed: missing ID"
             }
             }
-        }
-    },
-    "/api/posts/{id}": {
-            "delete": {
+        },
+      "delete": {
                 "summary": "Delete a post by ID",
                 "produces": [
                     "application/json"
@@ -156,7 +156,44 @@
                     }
                 }
             }
+        },
+    "/api/posts/search": {
+      "get": {
+            "summary": "Search for posts by title, content, author or date",
+            "produces": [
+                "application/json"
+            ],
+            "tags": [
+                "Post"
+            ],
+            "parameters": [
+                {
+                    "name": "query",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Successful operation",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": { "type": "integer" },
+                                "title": { "type": "string" },
+                                "content": { "type": "string" },
+                                "author": { "type": "string" },
+                                "date": { "type": "string", "format": "date-time" }
+                            }
+                        }
+                    }
+                }
+            }
         }
+    }
   }
 }
 

@@ -18,7 +18,7 @@ The API supports versioning through the Accept header,
 allowing clients to specify the desired version of the API
 
 """
-
+from docutils.nodes import author
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_limiter import Limiter
@@ -68,7 +68,7 @@ def get_posts():
 
     * If the request is GET, it retrieves all posts.
     Logs the request and returns a list of posts in JSON format.
-    Optionally, it can filter posts by title or content in the query,
+    Optionally, it can filter posts by title, content or author in the query,
     in alphabetical order, also optionally in ascending or descending
     order. For example: .../api/posts?sort=title&direction=desc
     Optionally, it can paginate the results with page and limit.
@@ -114,6 +114,8 @@ def get_posts():
                 posts = sorted(posts, key=lambda post: post['title'].lower())
             elif sort == 'content':
                 posts = sorted(posts, key=lambda post: post['content'].lower())
+            elif sort == 'author':
+                posts = sorted(posts, key=lambda post: post['author'].lower())
             else:
                 return jsonify({"error": "Invalid sort parameter"}), 400
 
@@ -175,8 +177,7 @@ def update_post(post_id):
     """
     Handles PUT requests for the /api/posts/<int:post_id> endpoint.
 
-    Logs the request, checks if the post exists and updates its content
-    if payload contains at least one key:value pair.
+    Logs the request, checks if the post exists and updates its content.
 
     :param post_id: Required post ID to update as an integer.
     :payload new_content: JSON payload with the new content for the post.
@@ -219,20 +220,32 @@ def update_post(post_id):
 @app.route('/api/posts/search', methods=['GET'])
 def search_posts():
     """
-    Search for posts by title or content.
+    Search for posts by title, content, author or date.
+
+    Logs the request and filters the posts based on the search term.
+    For example: .../api/posts/search?title=First
     :return: A list of posts that match the search term.
     """
-    # Get the search term from the query parameters
+    app.logger.info('GET request received for /api/posts/search')
+
     title = request.args.get('title', '')
     content = request.args.get('content', '')
+    author = request.args.get('author', '')
+    date = request.args.get('date', '')
+
     filtered_posts = []
-    # Filter the posts based on the search term
     if title:
         filtered_posts = [post for post in POSTS if title.lower()
                           in post['title'].lower()]
     elif content:
         filtered_posts = [post for post in POSTS if content.lower()
                           in post['content'].lower()]
+    elif author:
+        filtered_posts = [post for post in POSTS if author.lower()
+                          in post['author'].lower()]
+    elif date:
+        filtered_posts = [post for post in POSTS if date.lower()
+                          in post['date'].lower()]
 
     return jsonify(filtered_posts), 200
 
