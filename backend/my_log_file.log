@@ -18,3 +18,77 @@
 2025-04-01 23:01:02 INFO:  * Debugger PIN: 136-557-227
 2025-04-01 23:01:08 INFO: GET request received for /api/books
 2025-04-01 23:01:08 INFO: 192.168.2.104 - - [01/Apr/2025 23:01:08] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 07:17:09 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 07:17:09 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 07:17:09 INFO:  * Restarting with stat
+2025-04-02 07:17:09 WARNING:  * Debugger is active!
+2025-04-02 07:17:09 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 07:18:03 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 07:18:03 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 07:18:03 INFO:  * Restarting with stat
+2025-04-02 07:18:03 WARNING:  * Debugger is active!
+2025-04-02 07:18:03 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/index.css HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/swagger-ui.css HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /static/masterblog.json HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-02 07:18:03 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:03] "GET /api/docs/favicon-16x16.png HTTP/1.1" 200 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 07:18:16 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:16] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 07:18:17 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:17] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 07:18:22 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:22] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 07:18:24 INFO: GET request received for /api/books
+2025-04-02 07:18:24 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:24] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 07:18:30 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:30] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+2025-04-02 07:18:30 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:30] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+2025-04-02 07:18:30 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-02 07:18:42 INFO: GET request received for /api/books
+2025-04-02 07:18:42 INFO: 127.0.0.1 - - [02/Apr/2025 07:18:42] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 07:19:36 INFO: POST request received for /api/books
+2025-04-02 07:19:36 INFO: 127.0.0.1 - - [02/Apr/2025 07:19:36] "[35m[1mPOST /api/posts HTTP/1.1[0m" 201 -
+2025-04-02 07:19:43 INFO: GET request received for /api/books
+2025-04-02 07:19:43 INFO: 127.0.0.1 - - [02/Apr/2025 07:19:43] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 07:20:04 INFO: POST request received for /api/books
+2025-04-02 07:20:04 INFO: 127.0.0.1 - - [02/Apr/2025 07:20:04] "[31m[1mPOST /api/posts HTTP/1.1[0m" 400 -
+2025-04-02 07:20:19 INFO: GET request received for /api/books
+2025-04-02 07:20:19 INFO: 127.0.0.1 - - [02/Apr/2025 07:20:19] "GET /api/posts HTTP/1.1" 200 -
+2025-04-02 07:21:25 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.2.104:5002
+2025-04-02 07:21:25 INFO: [33mPress CTRL+C to quit[0m
+2025-04-02 07:21:25 INFO:  * Restarting with stat
+2025-04-02 07:21:25 WARNING:  * Debugger is active!
+2025-04-02 07:21:25 INFO:  * Debugger PIN: 136-557-227
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[32mGET /api/docs HTTP/1.1[0m" 308 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "GET /api/docs/ HTTP/1.1" 200 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/favicon-16x16.png HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/index.css HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /api/docs/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-02 07:21:25 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:25] "[36mGET /static/masterblog.json HTTP/1.1[0m" 304 -
+2025-04-02 07:21:42 INFO: POST request received for /api/books
+2025-04-02 07:21:42 INFO: 127.0.0.1 - - [02/Apr/2025 07:21:42] "[35m[1mPOST /api/posts HTTP/1.1[0m" 201 -

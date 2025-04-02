@@ -19,12 +19,14 @@ allowing clients to specify the desired version of the API
 
 """
 
-import logging
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_swagger_ui import get_swaggerui_blueprint
+import logging
+import datetime
+import webbrowser
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
@@ -46,9 +48,9 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 POSTS = [
     {"id": 1, "title": "First post", "content": "This is the first post.",
-     "author": "Your Name", "date": "2023-06-07"},
-    {"id": 2, "title": "Second post", "content": "This is the second post.",
-     "author": "Your Name", "date": "2023-06-07"}
+     "author": "Your Name", "date": "28-02-2025"},
+    {"id": 2, "title": "Second post", "content": "And this is the second post.",
+     "author": "Your Name", "date": "01-03-2025"}
 ]
 
 
@@ -57,30 +59,41 @@ POSTS = [
 def get_posts():
     """
     Handles GET and POST requests for the /api/posts
-    endpoint.
+    endpoint. Logs the requests.
 
-    If the request is POST, it creates a new post in the database.
+    * If the request is POST, it creates a new post in the database.
+    It expects a JSON payload with the post data (title, content, author).
+    It assigns a new ID to the post, adds the current date,
+    and appends it to the list of posts.
 
-    If the request is GET, it retrieves all posts.
+    * If the request is GET, it retrieves all posts.
     Logs the request and returns a list of posts in JSON format.
-
     Optionally, it can filter posts by title or content in the query,
     in alphabetical order, also optionally in ascending or descending
     order. For example: .../api/posts?sort=title&direction=desc
     Optionally, it can paginate the results with page and limit.
-    :return: A list of posts or a newly created post.
+    For example: .../api/posts?page=1&limit=10
+    It also supports versioning through the Accept header,
+    allowing clients to specify the desired version of the API response
+    (currently v1 default, this feature is just to learn how to implement it).
+
+    :return: A list of posts or a newly created post, or an error message,
+    along with the appropriate HTTP status code.
     """
     if request.method == 'POST':
-        # Create a new post from the request data
+        app.logger.info('POST request received for /api/books')
         new_post = request.get_json()
-        if not new_post or 'title' not in new_post or 'content' not in new_post:
+        if (not new_post or 'title' not in new_post
+                or 'content' not in new_post
+                or 'author' not in new_post):
             return jsonify({"error": "Invalid post data"}), 400
 
-        # Assign a new ID to the post
         ids = [post["id"] for post in POSTS]
         new_post['id'] = max(ids) + 1 if ids else 1
 
-        # Add the new post to the posts list
+        date = datetime.datetime.now().strftime('%d-%m-%Y')
+        new_post['date'] = date
+
         POSTS.append(new_post)
         return jsonify(new_post), 201
 
@@ -129,7 +142,7 @@ def get_posts():
             posts_v2 = [dict(post, version='v2') for post in posts]
             return jsonify(posts_v2)
 
-        return jsonify(posts)
+        return jsonify(posts), 200
 
 
 @app.route('/api/posts/<int:post_id>', methods=['DELETE'])
@@ -198,4 +211,5 @@ def search_posts():
 
 
 if __name__ == '__main__':
+    webbrowser.open('http://127.0.0.1:5002/api/docs')
     app.run(host="0.0.0.0", port=5002, debug=True)
