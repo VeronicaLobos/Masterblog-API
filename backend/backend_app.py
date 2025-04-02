@@ -18,26 +18,30 @@ The API supports versioning through the Accept header,
 allowing clients to specify the desired version of the API
 
 """
-from docutils.nodes import author
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_swagger_ui import get_swaggerui_blueprint
+import os
 import logging
 import datetime
 import webbrowser
+from storage.handle_json import HandleJson
+
+## Initialize Flask app and configure CORS, rate limiting, and logging.
 
 app = Flask(__name__)
-CORS(app)  # This will enable CORS for all routes
-limiter = Limiter(app=app, key_func=get_remote_address) # Rate limiting
+CORS(app)
+limiter = Limiter(app=app, key_func=get_remote_address)
 logging.basicConfig(level=logging.INFO,
     format='%(asctime)s %(levelname)s: %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     filename='my_log_file.log')
 
 
-# swagger endpoint e.g. HTTP://localhost:5002/api/docs
+## Configure swagger endpoint e.g. HTTP://localhost:5002/api/docs
+
 SWAGGER_URL="/api/docs"
 API_URL="/static/masterblog.json"
 swagger_ui_blueprint = get_swaggerui_blueprint(
@@ -46,13 +50,8 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
     config={'app_name': 'Masterblog API'})
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-POSTS = [
-    {"id": 1, "title": "First post", "content": "This is the first post.",
-     "author": "Your Name", "date": "28-02-2025"},
-    {"id": 2, "title": "Second post", "content": "And this is the second post.",
-     "author": "Your Name", "date": "01-03-2025"}
-]
 
+## Define the Endpoints
 
 @app.route('/api/posts', methods=['GET', 'POST'])
 @limiter.limit("10/minute")
@@ -64,7 +63,7 @@ def get_posts():
     * If the request is POST, it creates a new post in the database.
     It expects a JSON payload with the post data (title, content, author).
     It assigns a new ID to the post, adds the current date,
-    and appends it to the list of posts.
+    and appends it to the list of posts. Updates the database.
 
     * If the request is GET, it retrieves all posts.
     Logs the request and returns a list of posts in JSON format.
@@ -84,28 +83,33 @@ def get_posts():
     :return: A list of posts or a newly created post, or an error message,
     along with the appropriate HTTP status code.
     """
+    blog_posts = database.load_posts_from_json
+
     if request.method == 'POST':
         app.logger.info('POST request received for /api/posts')
+
         new_post = request.get_json()
         if (not new_post or 'title' not in new_post
                 or 'content' not in new_post
                 or 'author' not in new_post):
             return jsonify({"error": "Invalid post data"}), 400
 
-        ids = [post["id"] for post in POSTS]
+        ids = [post["id"] for post in blog_posts]
         new_post['id'] = max(ids) + 1 if ids else 1
 
-        date = datetime.datetime.now().strftime('%d-%m-%Y')
+        date = datetime.datetime.now().strftime('%Y-%m-%d')
         new_post['date'] = date
 
-        POSTS.append(new_post)
+        blog_posts.append(new_post)
+        database.save_posts_to_json(blog_posts)
+
         return jsonify(new_post), 201
 
     elif request.method == 'GET':
         app.logger.info('GET request received for /api/posts')
 
         accept_header = request.headers.get('Accept')
-        posts = POSTS[:]
+        posts = blog_posts[:]
 
         sort = request.args.get('sort')
         direction = request.args.get('direction')
@@ -153,6 +157,9 @@ def delete_post(post_id):
     Handles DELETE requests for the /api/posts/<int:post_id> endpoint.
 
     Logs the request and deletes the post with the specified ID.
+    Loads the data from the database (a list of dicts),
+    and a count of the posts stored.
+    Updates the database with the new list.
     Checks if there is one less post in the database.
 
     :param post_id: Required post ID to delete as an integer.
@@ -161,11 +168,14 @@ def delete_post(post_id):
     """
     app.logger.info('DELETE request received for /api/posts/<int:post_id>')
 
-    global POSTS
-    initial_length = len(POSTS)
-    POSTS = [post for post in POSTS if post.get('id') != post_id]
+    blog_posts = database.load_posts_from_json
 
-    if len(POSTS) < initial_length:
+    initial_length = len(blog_posts)
+    blog_posts = [post for post in blog_posts if post.get('id') != post_id]
+
+    database.save_posts_to_json(blog_posts)
+
+    if len(blog_posts) < initial_length:
         return jsonify({"message": f"Post with id {post_id} "
                             f"has been deleted successfully."}), 200
     else:
@@ -177,7 +187,12 @@ def update_post(post_id):
     """
     Handles PUT requests for the /api/posts/<int:post_id> endpoint.
 
-    Logs the request, checks if the post exists and updates its content.
+    Logs the request.
+    Loads the data from the database (a list of dicts),
+    and a count of the posts stored.
+    Checks if the post with the specified ID exists.
+    If it does, it updates the post with the new content,
+    and updates the database with the new list.
 
     :param post_id: Required post ID to update as an integer.
     :payload new_content: JSON payload with the new content for the post.
@@ -190,8 +205,9 @@ def update_post(post_id):
     """
     app.logger.info('PUT request received for /api/posts/<int:post_id>')
 
-    global POSTS
-    post = [post for post in POSTS if post.get('id') == post_id]
+    blog_posts = database.load_posts_from_json
+
+    post = [post for post in blog_posts if post.get('id') == post_id]
 
     if not post:
         return jsonify({"error": "Post not found: please check the ID"}), 404
@@ -209,10 +225,16 @@ def update_post(post_id):
         if 'date' in new_content:
             post_to_update['date'] = new_content['date']
 
-    for item, post in enumerate(POSTS):
+    for item, post in enumerate(blog_posts):
         if post['id'] == post_id:
             post.update(post_to_update)
             break
+
+    try:
+        database.save_posts_to_json(blog_posts)
+    except Exception as e:
+        app.logger.error(f"Error saving posts: {e}")
+        return jsonify({"error": "Internal server error"}), 500
 
     return jsonify(post_to_update), 200
 
@@ -223,10 +245,14 @@ def search_posts():
     Search for posts by title, content, author or date.
 
     Logs the request and filters the posts based on the search term.
-    For example: .../api/posts/search?title=First
+        For example: .../api/posts/search?title=First
+    Loads the data from the database (a list of dicts),
+    and returns a list of posts that match the search term.
     :return: A list of posts that match the search term.
     """
     app.logger.info('GET request received for /api/posts/search')
+
+    blog_posts = database.load_posts_from_json
 
     title = request.args.get('title', '')
     content = request.args.get('content', '')
@@ -235,21 +261,24 @@ def search_posts():
 
     filtered_posts = []
     if title:
-        filtered_posts = [post for post in POSTS if title.lower()
+        filtered_posts = [post for post in blog_posts if title.lower()
                           in post['title'].lower()]
     elif content:
-        filtered_posts = [post for post in POSTS if content.lower()
+        filtered_posts = [post for post in blog_posts if content.lower()
                           in post['content'].lower()]
     elif author:
-        filtered_posts = [post for post in POSTS if author.lower()
+        filtered_posts = [post for post in blog_posts if author.lower()
                           in post['author'].lower()]
     elif date:
-        filtered_posts = [post for post in POSTS if date.lower()
+        filtered_posts = [post for post in blog_posts if date.lower()
                           in post['date'].lower()]
 
     return jsonify(filtered_posts), 200
 
 
 if __name__ == '__main__':
+    file_path = os.path.join('./data', 'blog_posts.json')
+    database = HandleJson(file_path)
+
     webbrowser.open('http://127.0.0.1:5002/api/docs')
     app.run(host="0.0.0.0", port=5002, debug=True)

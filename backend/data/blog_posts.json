@@ -1,0 +1,23 @@
+[
+    {
+        "title": "First post",
+        "content": "This is the first post.",
+        "author": "Your Name",
+        "id": 1,
+        "date": "2025-02-28"
+    },
+    {
+        "title": "Second post",
+        "content": "And this is the second post.",
+        "author": "Your Name",
+        "id": 2,
+        "date": "2025-03-31"
+    },
+    {
+        "author": "John Titor",
+        "content": "Dear Art, I had to fax when I heard other time travelers calling in from any time past the year 2500 AD...",
+        "title": "Time travel",
+        "id": 3,
+        "date": "2025-04-02"
+    }
+]
